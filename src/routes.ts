@@ -6,6 +6,7 @@ import { DetailUserService } from "./services/user/DetailUserService.js";
 import { DetailuserController } from "./controllers/user/DetailUserController.js";
 import { RemoveUserController } from "./controllers/user/RemoveUserController.js";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController.js";
+import { EditCategoryController } from "./controllers/category/EditCategoryController.js";
 
 const router = Router();
 router.get("/test", (request: Request, reponse: Response) => {
@@ -20,5 +21,6 @@ router.delete('/user/remove', new RemoveUserController().handle);
 
 //Category routes
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
+router.put('/category/edit', isAuthenticated, new EditCategoryController().handle)
 
 export {router};
