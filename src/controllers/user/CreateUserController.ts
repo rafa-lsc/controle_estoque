@@ -1,5 +1,5 @@
 import { type Request, type Response } from "express";
-import { CreateUserService } from "../../services/users/CreateUseServices.js";
+import { CreateUserService } from "../../services/user/CreateUseServices.js";
 import { type UserRequest } from "../../models/interfaces/user/UserRequest.js";
 
 class CreateUserController {
