@@ -5,6 +5,7 @@ import { isAuthenticated } from "./middlewares/isAuthenticated.js";
 import { DetailUserService } from "./services/user/DetailUserService.js";
 import { DetailuserController } from "./controllers/user/DetailUserController.js";
 import { RemoveUserController } from "./controllers/user/RemoveUserController.js";
+import { CreateCategoryController } from "./controllers/category/CreateCategoryController.js";
 
 const router = Router();
 router.get("/test", (request: Request, reponse: Response) => {
@@ -16,5 +17,8 @@ router.post('/user', new CreateUserController().handle);
 router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticated, new DetailuserController().handle);
 router.delete('/user/remove', new RemoveUserController().handle);
+
+//Category routes
+router.post('/category', isAuthenticated, new CreateCategoryController().handle)
 
 export {router};

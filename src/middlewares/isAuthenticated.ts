@@ -17,7 +17,7 @@ export function isAuthenticated(
         return response.status(401).end();
     }
 
-    const [, token] = authToken.split("");
+    const [, token] = authToken.split(" ");
 
     try{
         //Validar token
@@ -25,6 +25,6 @@ export function isAuthenticated(
         request.user_id = sub;
         return next(); //Deixa que a requisição prossiga
     } catch(error){
-          return response.send(401).end();  
+          return response.status(401).end();  
     }
 }
