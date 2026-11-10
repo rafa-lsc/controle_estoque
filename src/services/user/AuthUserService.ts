@@ -1,7 +1,9 @@
 import { compare } from "bcryptjs";
-import {sign} from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import prismaClient from "../../prisma/index.js";
 import { type AuthRequest } from "../../models/interfaces/user/auth/Authrequest.js";
+
+const { sign } = jwt
 
 class AuthUserService{
     async execute({email, password}: AuthRequest){
