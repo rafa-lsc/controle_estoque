@@ -8,6 +8,7 @@ import { RemoveUserController } from "./controllers/user/RemoveUserController.js
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController.js";
 import { EditCategoryController } from "./controllers/category/EditCategoryController.js";
 import { ListCategoryController } from "./controllers/category/ListCategoryController.js";
+import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController.js";
 
 const router = Router();
 router.get("/test", (request: Request, reponse: Response) => {
@@ -24,5 +25,6 @@ router.delete('/user/remove', new RemoveUserController().handle);
 router.post('/category', isAuthenticated, new CreateCategoryController().handle)
 router.put('/category/edit', isAuthenticated, new EditCategoryController().handle)
 router.get('/category/all', isAuthenticated, new ListCategoryController().handle)
+router.delete('/category/remove', isAuthenticated, new RemoveCategoryController().handle)
 
 export {router};
