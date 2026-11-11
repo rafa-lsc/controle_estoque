@@ -9,8 +9,11 @@ import { CreateCategoryController } from "./controllers/category/CreateCategoryC
 import { EditCategoryController } from "./controllers/category/EditCategoryController.js";
 import { ListCategoryController } from "./controllers/category/ListCategoryController.js";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController.js";
+import multer from "multer";
+import uploadConfig from "./config/multer.js"
 
 const router = Router();
+const upload = multer(uploadConfig.upload("./tmp"))
 router.get("/test", (request: Request, reponse: Response) => {
     return reponse.json({ok: true});
 });
