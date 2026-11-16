@@ -14,6 +14,7 @@ import { EditProductController } from "./controllers/product/EditProductControll
 import { ListProductByCategoryController } from "./controllers/product/ListProductByCategoryController.js";
 import { ListProductsController } from "./controllers/product/ListProductsController.js";
 import { RemoveProductController } from "./controllers/product/RemoveProductController.js";
+import { SaleProductController } from "./controllers/sale/SaleProductController.js";
 import multer from "multer";
 import uploadConfig from "./config/multer.js"
 
@@ -41,5 +42,8 @@ router.put('/product/edit', isAuthenticated, upload.single("file"), new EditProd
 router.get('/product', isAuthenticated, new ListProductByCategoryController().handle)
 router.get('/products', isAuthenticated, new ListProductsController().handle)
 router.delete('/product/remove', isAuthenticated, new RemoveProductController().handle)
+
+//Sale routes
+router.put('/sale/product', isAuthenticated, new SaleProductController().handle)
 
 export {router};
