@@ -68,11 +68,11 @@ updated_at DateTime? @default(now())
 category Category @relation(fields: [category_id], references: [id])
 category_id String
 
-supplier    Supplier @relation(fields: [supplier_id], references: [id])
-supplier_id String
+supplier    Supplier? @relation(fields: [supplier_id], references: [id])
+supplier_id String?
 
-user User   @relation(fields: [user_id], references: [id])
-user_id String
+user User?   @relation(fields: [user_id], references: [id])
+user_id String?
 
 items Item[]
 
