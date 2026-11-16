@@ -4,7 +4,7 @@ import type { ProductRequest } from "../../models/interfaces/product/ProductRequ
 
 class CreateProductController {
     async handle(request: Request, response: Response) {
-        const { name, price, description, banner, category_id, amount }: ProductRequest = request.body;
+        const { name, price, description, banner, category_id, amount, supplier_id, supplierId }: ProductRequest = request.body;
         const createProductService = new CreateProductService();
 
         if (!request.file) {
@@ -17,7 +17,8 @@ class CreateProductController {
                 description,
                 banner,
                 category_id,
-                amount
+                amount,
+                supplier_id: supplier_id || supplierId
             });
 
             return response.json(product);

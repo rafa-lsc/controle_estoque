@@ -10,11 +10,17 @@ import { EditCategoryController } from "./controllers/category/EditCategoryContr
 import { ListCategoryController } from "./controllers/category/ListCategoryController.js";
 import { RemoveCategoryController } from "./controllers/category/RemoveCategoryController.js";
 import { CreateProductController } from "./controllers/product/CreateProductController.js";
+import { DetailProductController } from "./controllers/product/DetailProductController.js";
 import { EditProductController } from "./controllers/product/EditProductController.js";
 import { ListProductByCategoryController } from "./controllers/product/ListProductByCategoryController.js";
 import { ListProductsController } from "./controllers/product/ListProductsController.js";
 import { RemoveProductController } from "./controllers/product/RemoveProductController.js";
 import { SaleProductController } from "./controllers/sale/SaleProductController.js";
+import { CreateSupplierController } from "./controllers/supplier/CreateSupplierController.js";
+import { DetailSupplierController } from "./controllers/supplier/DetailSupplierController.js";
+import { EditSupplierController } from "./controllers/supplier/EditSupplierController.js";
+import { ListSupplierController } from "./controllers/supplier/ListSupplierController.js";
+import { RemoveSupplierController } from "./controllers/supplier/RemoveSupplierController.js";
 import multer from "multer";
 import uploadConfig from "./config/multer.js"
 
@@ -38,10 +44,19 @@ router.delete('/category/remove', isAuthenticated, new RemoveCategoryController(
 
 //Product routes
 router.post('/product', isAuthenticated, upload.single("file"), new CreateProductController().handle)
+router.post('/products', isAuthenticated, upload.single("file"), new CreateProductController().handle)
 router.put('/product/edit', isAuthenticated, upload.single("file"), new EditProductController().handle)
 router.get('/product', isAuthenticated, new ListProductByCategoryController().handle)
 router.get('/products', isAuthenticated, new ListProductsController().handle)
+router.get('/products/:id', isAuthenticated, new DetailProductController().handle)
 router.delete('/product/remove', isAuthenticated, new RemoveProductController().handle)
+
+//Supplier routes
+router.post('/suppliers', isAuthenticated, new CreateSupplierController().handle)
+router.get('/suppliers', isAuthenticated, new ListSupplierController().handle)
+router.get('/suppliers/:id', isAuthenticated, new DetailSupplierController().handle)
+router.put('/suppliers/:id', isAuthenticated, new EditSupplierController().handle)
+router.delete('/suppliers/:id', isAuthenticated, new RemoveSupplierController().handle)
 
 //Sale routes
 router.put('/sale/product', isAuthenticated, new SaleProductController().handle)
